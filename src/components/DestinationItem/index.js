@@ -1,7 +1,6 @@
 import './index.css'
 
-const DestinationItem = props => {
-  const {destinationDetails} = props
+const DestinationItem = ({destinationDetails}) => {
   const {imgUrl, name} = destinationDetails
 
   return (

@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import DestinationSearch from './components/DestinationSearch'
 
 import './App.css'
@@ -69,6 +70,23 @@ const destinationsList = [
   },
 ]
 
-const App = () => <DestinationSearch destinationsList={destinationsList} />
+const App = () => {
+  const [searchInput, setSearchInput] = useState('')
+  const onChangeSearchInput = event => {
+    setSearchInput(event.target.value)
+  }
+  const filteredDestinations = destinationsList.filter(destination =>
+    destination.name.toLowerCase().includes(searchInput.toLowerCase()),
+  )
+
+  return (
+    <DestinationSearch
+      destinationsList={filteredDestinations}
+      searchInput={searchInput}
+      onChangeSearchInput={onChangeSearchInput}
+    />
+  )
+}
 
 export default App
+
